@@ -16,5 +16,15 @@ On the destination chain, a special OmniGov `ReceiverExecutor` contract receives
 
 ## How it was Built
 
+The governance structure of OmniGov is based on open source contracts from Open Zeppelin, including a DAO token (`ERC20` token with `ERC20Votes` extension) and an Governor contract. Starting from a vanilla OZ Governor contract, the execution function was overidden such that it can detect specially formatted proposals that target other chains, and in those cases, rather than try to excute them on the current chain, it forwards the transactions to the desired chain by sending a message via Layer Zero. Also added to the Governor contract are related Layer Zero variables and functions.
+
+Because the resulting Governor contract adheres to Open Zeppelin standard and interface, it can be use with DAO tools such as Tally for submitting proposals and votes.
+
+On each destination chain, a `ReceiverExecutor` contract is deployed, which implements the Layer Zero `ILayerZeroReceiver` interface. The `lzReceive()` function requires that all messages are sent from the Layer Zero Endpoint contract. Only messages from specific destinations on specific chains. For OmniGov we allow only messages from our Governor contract address on our chose governance chain. Once these have been validated, the receiver contract takes the target, value, and calldata from the DAP proposal and executes them. For example, a proposal on a Polygon-based governor might be to send 1,000 DAI to a DAO contributor on ETH Mainnet.
+
+*Note:* While Layer Zero supports sending tokens from one chain to another -- which works well! -- this functionality is not part of this project. While OmniGov focuses on the governance piece, it would be feasible for a DAO to incorporate both Omnichain Governance _and_ cross-chain token transfers as part of its operations.
+
+
+
 
 
