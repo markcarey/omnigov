@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>OmniGov - Omnichain Governance for DAOs</title>
+  <link rel="shorcut icon" type="image/png" href="/images/omni-gov-black.png">
+  <link rel="apple-touch-icon" href="/images/omni-gov-black.png">
+
+  <!--Open Graph tags-->
+  <meta property="og:url" content="https://omnigov.xyz" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Omnichain Governance for DAOs" />
+  <meta property="og:description" content="DAO governance on one chain, on-chain execution on another." />
+  <meta property="og:image" content="https://omnigiv.xyz/images/omni-gov-black.png" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@mthacks">
+  <meta name="twitter:creator" content="@mthacks">
+  <meta name="twitter:title" content="Omnichain Governance for DAOs">
+  <meta name="twitter:description" content="DAO governance on one chain, on-chain execution on another.">
+  <meta name="twitter:image" content="https://omnigov.xyz/images/omni-gov-black.png">
+  <!--END Open Graph tags-->
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <style>
+    code {
+      padding: 2px 3px 1px;
+      border: 1px solid var(--saf-0);
+      border-radius: 3px;
+      background-color: rgba(var(--sk_foreground_min,29,28,29),.04);
+      color: #e01e5a;
+    }
+  </style>
+</head>
+<body>
+  <nav class="grey darken-3" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="/" class="brand-logo"><img src="/images/omni-gov-white.png" style="height: 64px;" /></a>
+      <span class="badge chain white text-grey text-darken-3" data-badge-caption="">Rinkeby</span>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#" class="connect"><img /><span>Connect</span></a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="#" class="connect"><img /><span>Connect</span></a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <div class="section no-pad-bot welcome" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center grey-text text-darken-3">Omnichain Governance</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">Vote on one chain, execute on another</h5>
+      </div>
+      <div class="row center">
+        <a href="#" id="start-button" class="btn-large waves-effect waves-light grey darken-3 connect">Connect Wallet</a>
+      </div>
+      <br><br>
+
+    </div>
+  </div>
+
+
+  <div class="container welcome">
+    <div class="section welcome">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center grey-text text-darken-3"><i class="material-icons">local_gas_station</i></h2>
+            <h5 class="center">Gas Savings</h5>
+
+            <p class="light">Do on-chain proposals and voting on low-gas chain</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center grey-text text-darken-3"><i class="material-icons">assignment_turned_in</i></h2>
+            <h5 class="center">Omnichain Protocols</h5>
+
+            <p class="light">Protocol deployed on multiple chains? Do goverance on one chain, then on-chain execution on multiple chains.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center grey-text text-darken-3"><i class="material-icons">exposure_zero</i></h2>
+            <h5 class="center">Powered by Layer Zero</h5>
+
+            <p class="light">LayerZero enables sending secure messages across blockchains</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <br><br>
+  </div>
+
+
+  <div id="token-card" class="container section">
+    <div class="row card-panel">
+      <h4>Create Token<span class="new badge chain" data-badge-caption="">Rinkeby</span></h3>
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <input value="" placeholder="My Goverance Token" id="tokenName" type="text" class="validate">
+            <label for="tokenName">Token Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input value="" placeholder="SMBL" id="tokenSymbol" type="text" class="validate">
+            <label for="tokenSymbol">Token Symbol</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <select id="tokenAccepted">
+              <option value="DAIx">DAI</option>
+              <option value="USDCx">USDC</option>
+              <option value="WETHx">WETH</option>
+            </select>
+            <label for="tokenAccepted">Accepted Token for Deposits</label>
+          </div>
+        </div>
+        <a id="create-token" class="waves-effect waves-light btn grey darken-3">Next</a>
+      </form>
+    </div>
+  </div>
+
+  <div id="gov-card" class="container section">
+    <div class="row card-panel">
+      <h4>Create Governance<span class="new badge chain" data-badge-caption="">Rinkeby</span></h3>
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <input value="" placeholder="45818" id="govVotingPeriod" type="text" class="validate">
+            <label for="govVotingPeriod">Voting Period (190,000 blocks ≈ 5 days)</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <div class="switch">
+              <label>
+                <input id="govVetoable" type="checkbox">
+                <span class="lever" style="margin-left: 0px;"></span>
+                Enable veto power for deployer? (can be renounced later)
+              </label>
+            </div>
+          </div>
+        </div>
+        <a id="create-gov" class="waves-effect waves-light btn grey darken-3">Create Governance</a>
+      </form>
+    </div>
+  </div>
+
+  <div id="details-card" class="container section">
+
+  </div>
+
+
+
+
+  <footer class="page-footer red">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">About OmniGov</h5>
+          <p class="grey-text text-lighten-4">Omnichain Governance emables proposals and voting on one chain, and on-chain execution on another</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Powered By</h5>
+          <ul>
+            <li><a class="white-text" target="_blank" href="https://docs.openzeppelin.com/contracts/4.x/governance">Open Zeppelin Governance</a></li>
+            <li><a class="white-text" target="_blank" href="https://layerzero.network/">Layer Zero</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Works With</h5>
+          <ul>
+            <li><a class="white-text" target="_blank" href="https://tally.xyz">Tally</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made during the DAO Hacks Hackathon
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@alch/alchemy-web3@latest/dist/alchemyWeb3.min.js"></script>
+  <script src="https://cdn.ethers.io/lib/ethers-5.1.umd.min.js" type="text/javascript"></script>    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="js/abis.js?v=2"></script>
+  <script src="js/dapp.js?v=7"></script>
+
+  </body>
+</html>
