@@ -1,6 +1,6 @@
 # Omnichain Governance
 
-Omnichain Governance is a means of doing on-chain proposals and voting on one chain and on-chain execution of those proposals on _other_ chains.
+Omnichain Governance enables on-chain proposals and voting on one chain, and on-chain execution of those proposals on _other_ chains -- in a secure, trustless manner.
 
 ## Two Key Use Cases
 
@@ -23,6 +23,17 @@ Because the resulting Governor contract adheres to Open Zeppelin standard and in
 On each destination chain, a `ReceiverExecutor` contract is deployed, which implements the Layer Zero `ILayerZeroReceiver` interface. The `lzReceive()` function requires that all messages are sent from the Layer Zero Endpoint contract. Only messages from specific destinations on specific chains. For OmniGov we allow only messages from our Governor contract address on our chose governance chain. Once these have been validated, the receiver contract takes the target, value, and calldata from the DAP proposal and executes them. For example, a proposal on a Polygon-based governor might be to send 1,000 DAI to a DAO contributor on ETH Mainnet.
 
 *Note:* While Layer Zero supports sending tokens from one chain to another -- which works well! -- this functionality is not part of this project. While OmniGov focuses on the governance piece, it would be feasible for a DAO to incorporate both Omnichain Governance _and_ cross-chain token transfers as part of its operations.
+
+## Demo
+
+- Video: (TBD)
+- Create an Omnichain Governance DAO: https://omnigov.xyz
+- Example DAO using Tally UI: https://www.tally.xyz/governance/eip155:4:0xfd2Cc9840aDeCfcc27cb44E3D1d8f43aCB5dB25C
+
+## Contact
+
+- Twitter: https://twitter.com/mthacks
+- Discord: markcarey#5670
 
 
 
