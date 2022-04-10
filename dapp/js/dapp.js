@@ -13,7 +13,7 @@ var blockExplorer = ""
 var addr = {};
 
 var factories = {};
-factories.rinkeby =     "0xe534A399D725D8945Ed45460b5b8A8aDf6be109E";
+factories.rinkeby =     "0xe77ffbE889728a7C99E1A414D81f9224432D6608";
 factories.mumbai =      "0x9F9352067276409552e895a63699FaFB2C5543dA"; // mumbai
 factories.polygon =     "0xAC57C8a11c52cd50f537054BEF3998Ab43C12b06"; // polygon
 var factoryAddress = factories[chain];
