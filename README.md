@@ -26,7 +26,7 @@ On each destination chain, a `ReceiverExecutor` contract is deployed, which impl
 
 ## Demo
 
-- Video: (TBD)
+- Video: https://youtu.be/MbovTVqqU-g
 - Create an Omnichain Governance DAO: https://omnigov.xyz
 - Example DAO using Tally UI: https://www.tally.xyz/governance/eip155:4:0xfd2Cc9840aDeCfcc27cb44E3D1d8f43aCB5dB25C
 
