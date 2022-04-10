@@ -121,9 +121,9 @@ contract DAOGovernor is Initializable, GovernorUpgradeable, GovernorSettingsUpgr
             // abi.encode() the payload
             bytes memory payload = abi.encode(targets[1], values[1], calldatas[1]);
 
-            uint16 version = 1;
-            uint gasAmountForDst = 1000000;
-            bytes memory _relayerParams = abi.encodePacked(version, gasAmountForDst);
+            //uint16 version = 1;
+            //uint256 gasAmountForDst = 1000000;
+            //bytes memory _relayerParams = abi.encodePacked(version, gasAmountForDst);
 
             // send LayerZero message
             endpoint.send{value: 100000000000000000}(
@@ -132,7 +132,7 @@ contract DAOGovernor is Initializable, GovernorUpgradeable, GovernorSettingsUpgr
                 payload,                                // abi.encode()'ed bytes
                 payable(address(this)),                 // refund address (LayerZero will refund any extra gas back)
                 address(0x0),                           // payment address if paying in token
-                _relayerParams                          // adapterParameters
+                bytes("")                               // adapterParameters
             );
             uint64 nonce = endpoint.getOutboundNonce(uint16(values[0]), address(this));
             emit SendToChain(uint16(values[0]), targets[1], proposalId, nonce);

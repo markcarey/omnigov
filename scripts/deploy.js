@@ -119,7 +119,7 @@ async function main(stf) {
     var c = {};
     var result;
 
-    var v = "v0.3";
+    var v = "v0.4";
     const tokenSalt = ethers.utils.id("TOKEN"+v);
     const appSalt = ethers.utils.id("APP"+v);
     const govSalt = ethers.utils.id("GOV"+v);
