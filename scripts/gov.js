@@ -21,7 +21,7 @@ const superAppAddress = "0xeA857995adBe6160713DfC116d83FEDDa125D6A6";
 const daoTokenAddress = "0x1140BDd4CaC1660E1bDa75af8113868E0E3B722E";
 const superTokenAddress = "0x20374426b9c1f98110dd6E965feD264d6102b5c2";
 
-const governorAddress = "0xfd2Cc9840aDeCfcc27cb44E3D1d8f43aCB5dB25C";
+const governorAddress = "0x34f839cC4117B224C51284AE64b63868af6Abd8B";
 const timelockAddress = "0xE4Ba755aB8da3bC521C489c140E3E4A1a4f0b3D3";
 
 const govJSON = require("../artifacts/contracts/governance/Governor.sol/DAOGovernor.json");
@@ -2671,11 +2671,32 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+
+async function dstContractLookup(chainId) {
+  var e = await gov.dstContractLookup(
+    chainId
+  );
+  console.log(e);
+}
+
 async function setDestination(chainId, address) {
   var e = await gov.setDestination(
     chainId,
     address
   );
+  await e.wait();
+}
+
+async function execute() {
+  var targets = ["0x79a63d6d8BBD5c6dfc774dA79bCcD948EAcb53FA","0x03911e0E3742c764Db0953fA384cbC29A699177A"];
+  var values = [10009, 0];
+  var cdatas = [
+    "0x07e0db170000000000000000000000000000000000000000000000000000000000000001",
+    "0x2fb1632e000000000000000000000000b13891db3614ce411fc4d35d55631e9f4ad611e3000000000000000000000000000000000000000000000000000002e24d16b5a800000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000062524f4300000000000000000000000000000000000000000000000000000000000151800000000000000000000000000000000000000000000000000000000000000000241ecf16d79d0f8dbfb92cbc07fe17840425976cf0667f022fe9877caa831b08"
+  ];
+  var descHash = web3.utils.keccak256(`# Stream WETH to a DAO Member on Mumbai Start a real-time stream of WETH on Mumbai using the TokenVesting protocol powered by Superfluid.`);
+  var e = await gov.execute(targets, values, cdatas, descHash);
+  console.log(e);
   await e.wait();
 }
 
@@ -2913,8 +2934,10 @@ async function deployAppFactory() {
 //deposit(addr.DAI, "20000000000000000000", PUBLIC_KEY)
 //grant(PUBLIC_KEY, "20000000000000000000")
 //authFactory()
-setDestination(10009, "0xE740a01d527e95b883079CE89f0C5ccC8Fb7e077") // mumbai
-//setDestination(10011, "0x3867c8789e1c77fCf4a990331a9fA9685dE24490") // optikovan
+//setDestination(10009, "0xE740a01d527e95b883079CE89f0C5ccC8Fb7e077") // mumbai
+setDestination(10011, "0x3867c8789e1c77fCf4a990331a9fA9685dE24490") // optikovan
+//dstContractLookup(10009)
+//execute()
 
  //clone("The Backee", "EEE", '10000000000000000000000000000')
    .then(() => process.exit(0))
